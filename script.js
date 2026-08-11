@@ -19,11 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(src, { method: 'HEAD' })
       .then((res) => {
         if (!res.ok) return;
-        videoEl.setAttribute('autoplay', '');
         videoEl.src = src;
         videoEl.load();
         slot.classList.add('has-video');
-        videoEl.play().catch(() => {});
+        if (slot.dataset.cover) {
+          // Cover mode (01–03): show the poster with its play button + themes,
+          // start playing only when the visitor clicks. No autoplay.
+          videoEl.removeAttribute('autoplay');
+          slot.classList.add('is-cover');
+          const toggle = () => { videoEl.paused ? videoEl.play().catch(() => {}) : videoEl.pause(); };
+          videoEl.addEventListener('click', toggle);
+          videoEl.addEventListener('play', () => slot.classList.add('is-playing'));
+          videoEl.addEventListener('pause', () => slot.classList.remove('is-playing'));
+        } else {
+          // Autoplay loop (the CTA teaser).
+          videoEl.setAttribute('autoplay', '');
+          videoEl.play().catch(() => {});
+        }
       })
       .catch(() => {});
   });
