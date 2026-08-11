@@ -181,18 +181,10 @@ p { margin: 0 0 1em; color: var(--text-dim); }
   font-size: 18px;
 }
 .brand-mark {
-  width: 26px; height: 26px;
-  border: 1px solid var(--signal);
-  border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  position: relative;
-}
-.brand-mark::after {
-  content: "";
-  width: 6px; height: 6px;
-  background: var(--signal);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--signal);
+  width: 17px; height: 26px;
+  display: block;
+  flex-shrink: 0;
+  transition: filter 0.2s ease;
 }
 .nav-links {
   display: flex;
@@ -733,19 +725,9 @@ footer {
 }
 .hero .hero-grid { position: relative; z-index: 2; }
 
-/* Brand mark — outward pulse ring */
-.brand-mark::before {
-  content: "";
-  position: absolute; inset: -4px;
-  border-radius: 50%;
-  border: 1px solid var(--signal);
-  opacity: 0;
-  animation: markPulse 3.2s ease-out infinite;
-}
-@keyframes markPulse {
-  0%   { opacity: .5; transform: scale(.85); }
-  70%  { opacity: 0;  transform: scale(1.55); }
-  100% { opacity: 0; }
+/* Brand mark — subtle glow on hover, shape-agnostic */
+.brand:hover .brand-mark {
+  filter: drop-shadow(0 0 6px rgba(255,138,61,0.55));
 }
 
 /* Nav — richer scrolled state */
@@ -823,7 +805,7 @@ footer {
 .reveal.in { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero::before, .brand-mark::before, .chain-line::after, .chain-node.loop::before { animation: none !important; }
+  .hero::before, .chain-line::after, .chain-node.loop::before { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
 
