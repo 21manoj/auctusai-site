@@ -844,3 +844,38 @@ body::before { opacity: 0.6; }
     radial-gradient(ellipse at 90% 100%, rgba(124,92,255,0.10), transparent 60%),
     rgba(15,16,28,0.6);
 }
+
+/* ============================================================
+   VIBRANT BACKGROUND (v4) — bold saturated gradient mesh.
+   Overrides the earlier subtle version. Panels tinted to match.
+   ============================================================ */
+:root { --bg: #160B34; }
+body {
+  background:
+    radial-gradient(58% 54% at 6% 2%,   rgba(255,138,61,0.32), transparent 55%),
+    radial-gradient(54% 54% at 99% 6%,  rgba(79,216,196,0.30), transparent 55%),
+    radial-gradient(66% 62% at 94% 99%, rgba(139,92,246,0.46), transparent 56%),
+    radial-gradient(60% 56% at 2% 97%,  rgba(236,72,153,0.34), transparent 55%),
+    radial-gradient(95% 95% at 50% 48%, rgba(64,96,230,0.26), transparent 70%),
+    linear-gradient(160deg, #1E1250 0%, #170C38 46%, #281447 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+body::before { opacity: 0.45; }
+/* panels become deep-purple glass so they read as color, not black boxes */
+.narrative-card, .process-card, .vertical-card, .trust-card, .cred-row,
+.playbook-list, .demo-slot, .cta-panel, .cred-list {
+  background: linear-gradient(180deg, rgba(38,26,72,0.80), rgba(26,16,52,0.86));
+  border-color: rgba(255,255,255,0.09);
+}
+.narrative-grid, .cred-list { background: rgba(255,255,255,0.06); }
+.strip { background: linear-gradient(90deg, rgba(34,22,66,0.72), rgba(48,28,80,0.72)); }
+.nav { background: rgba(20, 12, 46, 0.82); }
+.nav.scrolled { background: rgba(20, 12, 46, 0.94); }
+.section { border-bottom-color: rgba(255,255,255,0.07); }
+.cta-panel {
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,138,61,0.16), transparent 55%),
+    radial-gradient(ellipse at 90% 100%, rgba(139,92,246,0.22), transparent 55%),
+    rgba(30,20,58,0.6);
+}
