@@ -826,3 +826,39 @@ footer {
   .hero::before, .brand-mark::before, .chain-line::after, .chain-node.loop::before { animation: none !important; }
   .reveal { opacity: 1 !important; transform: none !important; }
 }
+
+/* ============================================================
+   COLORFUL BACKGROUND (v3) — replace the flat black with a
+   vibrant aurora canvas: deep indigo base + soft color blobs.
+   Color lives at the edges so section text stays readable.
+   ============================================================ */
+:root { --bg: #0C0D24; }
+body {
+  background:
+    radial-gradient(58% 48% at 12% -6%,  rgba(255,138,61,0.20), transparent 60%),
+    radial-gradient(52% 44% at 104% 8%,  rgba(79,216,196,0.18), transparent 60%),
+    radial-gradient(64% 58% at 88% 106%, rgba(139,92,246,0.26), transparent 62%),
+    radial-gradient(48% 48% at -8% 84%,  rgba(236,72,153,0.16), transparent 60%),
+    radial-gradient(72% 72% at 50% 42%,  rgba(56,84,190,0.12), transparent 72%),
+    linear-gradient(180deg, #0F1132 0%, #0C0D24 50%, #150F30 100%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+/* soften the white grid so color shows through */
+body::before { opacity: 0.6; }
+/* let big sections show the aurra; keep the verticals strip as a tinted divider */
+.strip { background: linear-gradient(90deg, rgba(20,23,28,0.72), rgba(25,20,40,0.72)); backdrop-filter: blur(2px); }
+/* nav picks up a hint of the canvas */
+.nav { background: rgba(10, 11, 22, 0.82); }
+.nav.scrolled { background: rgba(10, 11, 22, 0.94); }
+/* cards get a barely-there color lift so they don't read as flat black */
+.narrative-card, .process-card, .vertical-card, .trust-card, .cred-row, .playbook-list, .demo-slot {
+  background: linear-gradient(180deg, rgba(24,26,38,0.92), rgba(18,19,30,0.92));
+}
+/* CTA panel: richer multi-color glow */
+.cta-panel {
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255,138,61,0.10), transparent 60%),
+    radial-gradient(ellipse at 90% 100%, rgba(124,92,255,0.10), transparent 60%),
+    rgba(15,16,28,0.6);
+}
